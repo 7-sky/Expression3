@@ -8,11 +8,11 @@ TOOL.Tab						= "Wire"
 TOOL.ClientConVar.Model 		= "models/beer/wiremod/gate_e2.mdl"
 TOOL.ClientConVar.Weldworld 	= 0
 TOOL.ClientConVar.Frozen		= 0
-cleanup.Register("Expression 3")
+cleanup.Register("expression3")
 
 if SERVER then
 
-	CreateConVar( "sbox_maxepxression3", 20)
+	CreateConVar( "sbox_maxepxression3", 5)
 end
 
 function TOOL:GetModel( )
@@ -46,7 +46,7 @@ local function MakeE3(Player, Pos, Ang, Model, InPorts, OutPorts)
 			
 			Entity.PlyID = Player:EntIndex()
 			
-			Player:AddCount("Expression 3", Entity)
+			Player:AddCount("expression3", Entity)
 			
 			return Entity
 		end
@@ -60,14 +60,17 @@ function TOOL:Reload(Trace)
 end
 
 function TOOL:RightClick(Trace)
+	local Entity, Player = Trace.Entity, self:GetOwner()
 	
+	Player:ChatPrint("[Expression 3] Open Editor")
 end
 
 function TOOL:LeftClick(Trace)
 	local Entity, Player = Trace.Entity, self:GetOwner()
 	
 	if self:IsE3Gate(Entity) then		
-		return false
+		Player:ChatPrint("[Expression 3] Upload")
+		return true -- Upload there
 	end
 	
 	if Entity and Entity:IsValid() and Entity:IsPlayer() then
@@ -79,7 +82,7 @@ function TOOL:LeftClick(Trace)
 	local Ang = Trace.HitNormal:Angle()
 	Ang.pitch = Ang.pitch + 90
 	
-	Entity = MakeE3( Player, Pos, Ang, Model )
+	Entity = MakeE3(Player, Pos, Ang, Model)
 	
 	if Entity and Entity:IsValid() then
 		Entity:SetPos(Trace.HitPos - Trace.HitNormal * Entity:OBBMins().z)
@@ -87,19 +90,21 @@ function TOOL:LeftClick(Trace)
 		local WeldTo, Constraint = Trace.Entity
 		local AllowWorld = true
 		
-		if IsValid( WeldTo ) or AllowWorld then
+		if IsValid(WeldTo) or AllowWorld then
 			Constraint = constraint.Weld(Entity, WeldTo, 0, Trace.PhysicsBone, 0, 0, AllowWorld) 
 		end
 		
-		undo.Create("lemongate")
+		undo.Create("expression3")
 			undo.AddEntity(Entity)
 			undo.SetPlayer(Player)
 			undo.AddEntity(Constraint)
 		undo.Finish()
 		
-		Player:AddCleanup("lemongates", Entity)
+		Player:AddCleanup("expression3", Entity)
 		
-		-- Upload there
+		-- Upload there too
+		
+		Player:ChatPrint("[Expression 3] Spawn")
 		
 		return true
 	end
