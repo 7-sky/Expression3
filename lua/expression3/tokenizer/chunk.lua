@@ -34,7 +34,7 @@ function Expression3.Tokenizer.Chunk:CreateBranch(newBranch)
 end
 
 function Expression3.Tokenizer.Chunk:Process()
-	
+	Expression3.Tokenizer.Logic:Decide(self:GetSource())
 end
 
 function Expression3.Tokenizer.Chunk:Return()
