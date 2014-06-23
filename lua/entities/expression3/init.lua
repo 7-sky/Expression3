@@ -16,7 +16,7 @@ function ENT:Initialize()
 	self.Inputs = WireLib.CreateInputs(self, { })
 	self.Outputs = WireLib.CreateOutputs(self, { })
 	
-	self.GateName = "LemonGate"
+	self.GateName = "Expression 3"
 end
 
 function ENT:Think()
@@ -24,4 +24,12 @@ function ENT:Think()
 	self:NextThink(CurTime())
 	
 	return true
+end
+
+function ENT:Error(strError)
+	Expression3.Error(self:GetPlayer(), strError)
+end
+
+function ENT:Warning(strError)
+	Expression3.Warning(self:GetPlayer(), strError)
 end

@@ -11,7 +11,6 @@ TOOL.ClientConVar.Frozen		= 0
 cleanup.Register("expression3")
 
 if SERVER then
-
 	CreateConVar( "sbox_maxepxression3", 5)
 end
 
@@ -36,7 +35,6 @@ local function MakeE3(Player, Pos, Ang, Model, InPorts, OutPorts)
 			Entity:SetModel(Model)
 			Entity:SetAngles(Ang)
 			Entity:SetPos(Pos)
-			Entity:Spawn()
 			
 			--Entity:ApplyDupePorts(InPorts, OutPorts)
 			
@@ -45,6 +43,8 @@ local function MakeE3(Player, Pos, Ang, Model, InPorts, OutPorts)
 			Entity.Player = Player
 			
 			Entity.PlyID = Player:EntIndex()
+			
+			Entity:Spawn()
 			
 			Player:AddCount("expression3", Entity)
 			
