@@ -11,7 +11,7 @@ TOOL.ClientConVar.Frozen		= 0
 cleanup.Register("expression3")
 
 if SERVER then
-	CreateConVar( "sbox_maxepxression3", 5)
+	CreateConVar("sbox_maxepxression3", 5)
 end
 
 function TOOL:GetModel( )
