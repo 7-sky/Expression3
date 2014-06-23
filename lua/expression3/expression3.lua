@@ -16,6 +16,7 @@ function Expression3.Warning(plyPlayer, strWarning)
 end
 
 Expression3.Tokenizer = {}
+include("expression3/tokenizer/lang.lua")
 include("expression3/tokenizer/logic.lua")
 include("expression3/tokenizer/chunk.lua")
 include("expression3/tokenizer/tokenizer.lua")
