@@ -59,10 +59,12 @@ function TOOL:Reload(Trace)
 	return false
 end
 
+util.AddNetworkString("WireExpression3_OpenEditor")
+
 function TOOL:RightClick(Trace)
 	local Entity, Player = Trace.Entity, self:GetOwner()
 	
-	Player:ChatPrint("[Expression 3] Open Editor")
+	net.Start("WireExpression3_OpenEditor") net.Send(Player)
 end
 
 function TOOL:LeftClick(Trace)

@@ -15,8 +15,17 @@ function Expression3.Warning(plyPlayer, strWarning)
 	Expression3.Msg(plyPlayer, "Expression3 Warning: "..strWarning, 3)
 end
 
+function Expression3.LoadEditor()
+	if SERVER then return end
+	include("expression3/editor/editor.lua")
+	include("expression3/editor/texteditor.lua")
+	include("expression3/editor/net.lua")
+end
+
 Expression3.Tokenizer = {}
 include("expression3/tokenizer/lang.lua")
 include("expression3/tokenizer/logic.lua")
 include("expression3/tokenizer/chunk.lua")
 include("expression3/tokenizer/tokenizer.lua")
+
+Expression3.LoadEditor()
