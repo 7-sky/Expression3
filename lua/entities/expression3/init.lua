@@ -11,6 +11,8 @@ function ENT:Initialize()
 	
 	self:SetUseType(SIMPLE_USE)
 	
+	self:SetModel("models/beer/wiremod/gate_e2.mdl")
+	
 	self.Inputs = WireLib.CreateInputs(self, { })
 	self.Outputs = WireLib.CreateOutputs(self, { })
 	
