@@ -11,7 +11,7 @@ TOOL.ClientConVar.Frozen		= 0
 cleanup.Register("expression3")
 
 if SERVER then
-	CreateConVar("sbox_maxepxression3", 5)
+	CreateConVar("sbox_maxexression3", 5)
 end
 
 function TOOL:GetModel( )
@@ -28,7 +28,7 @@ end
 if CLIENT then return end
 
 local function MakeE3(Player, Pos, Ang, Model, InPorts, OutPorts)
-	if Player:CheckLimit("Expression 3") then
+	if Player:CheckLimit("exression3") then
 		local Entity = ents.Create("expression3")
 		
 		if Entity and Entity:IsValid() then 
