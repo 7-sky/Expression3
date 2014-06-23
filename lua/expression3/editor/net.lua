@@ -14,5 +14,5 @@ function Expression3.Editor:Reload()
 	end
 	return Expression3.Editor:GetIDE()
 end
-Expression3.Editor:Reload()
+
 net.Receive("WireExpression3_OpenEditor", Expression3.Editor.GetIDE)
