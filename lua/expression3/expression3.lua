@@ -14,3 +14,7 @@ end
 function Expression3.Warning(plyPlayer, strWarning)
 	Expression3.Msg(plyPlayer, "Expression3 Warning: "..strWarning, 3)
 end
+
+Expression3.Tokenizer = {}
+include("expression3/tokenizer/chunk.lua")
+include("expression3/tokenizer/tokenizer.lua")
